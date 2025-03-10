@@ -7,7 +7,7 @@ from telegram.ext import (
 )
 
 
-from states import GET_MONEY, GET_ROST, GET_VES, GET_SHUES
+from states import GET_MONEY, GET_ROST, GET_SHUES
 
 
 async def position(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -23,9 +23,8 @@ async def position(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def money(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [['средний', 'высокий']]
+    context.user_data["position"] = update.effective_message.text
     markup = ReplyKeyboardMarkup(keyboard)
-    text_user = update.effective_message.text
-    context.user_data["ves"] = text_user
     await context.bot.send_message(
         chat_id=update.effective_chat.id, text="выбери свой бюджет", reply_markup=markup
     )
@@ -33,20 +32,9 @@ async def money(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def rost(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    context.user_data["position"] = update.effective_message.text
     keyboard = [["до 180см", "выше 180см"]]
     markup = ReplyKeyboardMarkup(keyboard)
     await context.bot.send_message(
         chat_id=update.effective_chat.id, text="какой у тебя рост", reply_markup=markup
-    )
-    return GET_VES
-
-
-async def ves(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    context.user_data["rost"] = update.effective_message.text
-    keyboard = [["до 100кг", "больше 100кг"]]
-    markup = ReplyKeyboardMarkup(keyboard)
-    await context.bot.send_message(
-        chat_id=update.effective_chat.id, text="какой у тебя вес", reply_markup=markup
     )
     return GET_SHUES

@@ -8,9 +8,9 @@ from telegram.ext import (
 )
 
 
-from states import GET_POZITION, GET_MONEY, GET_ROST, GET_VES, GET_SHUES
+from states import GET_POZITION, GET_MONEY, GET_ROST, GET_SHUES
 
-from opros import position, rost, ves, money
+from opros import position, rost, money
 
 from shues import shues
 
@@ -32,7 +32,6 @@ if __name__ == "__main__":
             GET_POZITION: [MessageHandler(filters.TEXT & ~filters.COMMAND, position)],
             GET_MONEY: [MessageHandler(filters.TEXT & ~filters.COMMAND, money)],
             GET_ROST: [MessageHandler(filters.TEXT & ~filters.COMMAND, rost)],
-            GET_VES: [MessageHandler(filters.TEXT & ~filters.COMMAND, ves)],
             GET_SHUES: [MessageHandler(filters.TEXT & ~filters.COMMAND, shues)],
         },
         fallbacks=[CommandHandler("start", position)],

@@ -10,26 +10,23 @@ from telegram.constants import ParseMode
 
 
 async def shues(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    context.user_data['rost'] = update.effective_message.text
     message = await context.bot.send_message(
         chat_id=update.effective_chat.id, text="f", reply_markup=ReplyKeyboardRemove()
     )
     await context.bot.delete_message(
         chat_id=update.effective_chat.id, message_id=message.id
     )
-    text_user = update.effective_message.text
-    context.user_data["money"] = text_user
+    context.user_data["money"] = update.effective_message.text
     money = context.user_data["money"]
     position = context.user_data["position"]
-    ves = context.user_data["ves"]
     rost = context.user_data["rost"]
-    print(money, rost, ves, position)
+    print(money, rost, position)
     if (
         position == "1-2-3"
         and money == "средний"
-        and ves == "до 100кг"
         and rost == "до 180см"
-        or rost == "больше 180см"
-    ):
+        ):
         await context.bot.send_photo(
             chat_id=update.effective_chat.id,
             photo=open("imortallity.png", "rb"),
