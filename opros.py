@@ -24,6 +24,7 @@ async def position(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def money(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [['средний', 'высокий']]
     context.user_data["position"] = update.effective_message.text
+    print(context.user_data["position"])
     markup = ReplyKeyboardMarkup(keyboard)
     await context.bot.send_message(
         chat_id=update.effective_chat.id, text="выбери свой бюджет", reply_markup=markup
@@ -33,6 +34,8 @@ async def money(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def rost(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [["до 180см", "выше 180см"]]
+    context.user_data['money'] = update.effective_message.text
+    print(context.user_data['money'] )
     markup = ReplyKeyboardMarkup(keyboard)
     await context.bot.send_message(
         chat_id=update.effective_chat.id, text="какой у тебя рост", reply_markup=markup

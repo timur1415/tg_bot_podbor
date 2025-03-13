@@ -11,13 +11,13 @@ from telegram.constants import ParseMode
 
 async def shues(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data['rost'] = update.effective_message.text
+    print(context.user_data['rost'])
     message = await context.bot.send_message(
         chat_id=update.effective_chat.id, text="f", reply_markup=ReplyKeyboardRemove()
     )
     await context.bot.delete_message(
         chat_id=update.effective_chat.id, message_id=message.id
     )
-    context.user_data["money"] = update.effective_message.text
     money = context.user_data["money"]
     position = context.user_data["position"]
     rost = context.user_data["rost"]
