@@ -36,7 +36,7 @@ async def shues(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await context.bot.send_photo(
             chat_id=update.effective_chat.id,
             photo=open("photo/puma_all-pro.png", "rb"),
-            caption="\n\npuma all pro nitro\n\nкупить [тут](https://cdek.shopping/p/10424519/muzskie-basketbolnye-krossovki-puma-all-pro-nitro-belyisinii)\n\nчто бы начать заново нажми на /start",
+            caption="puma all pro nitro\n\nкупить [тут](https://cdek.shopping/p/10424519/muzskie-basketbolnye-krossovki-puma-all-pro-nitro-belyisinii)\n\nчто бы начать заново нажми на /start",
             parse_mode=ParseMode.MARKDOWN_V2,
         )
     elif (
@@ -59,7 +59,7 @@ async def shues(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await context.bot.send_photo(
             chat_id=update.effective_chat.id,
             photo=open("photo/nike_kd_17.png", "rb"),
-            caption="nike kd 17 купить [тут](https://cdek.shopping/p/11024758/krossovki-nike-kd-17-ep-zeltyi)\n\nчто бы начать заново нажми /start",
+            caption="nike kd 17\n\nкупить [тут](https://cdek.shopping/p/11024758/krossovki-nike-kd-17-ep-zeltyi)\n\nчто бы начать заново нажми /start",
             parse_mode=ParseMode.MARKDOWN_V2,
         )
     elif (
@@ -71,13 +71,13 @@ async def shues(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await context.bot.send_photo(
             chat_id=update.effective_chat.id,
             photo=open("photo/nike_gt_hustle.png", "rb"),
-            caption="nike air zoom gt hustle 2 купить [тут](https://cdek.shopping/p/11025377/krossovki-nike-air-zoom-gt-hustle-2-ep-belyi)",
+            caption="nike air zoom gt hustle 2\n\nкупить [тут](https://cdek.shopping/p/11025377/krossovki-nike-air-zoom-gt-hustle-2-ep-belyi)",
             parse_mode=ParseMode.MARKDOWN_V2,
         )
         await context.bot.send_photo(
             chat_id=update.effective_chat.id,
             photo=open("photo/jordan_luka.png", "rb"),
-            caption="jordan luka 2 купить [тут](https://cdek.shopping/p/10422910/jordan-luka-2-basketbolnye-krossovki-muzskie-zelenyi)\n\nчто бы начать заново нажми /start",
+            caption="jordan luka 2\n\nкупить [тут](https://cdek.shopping/p/10422910/jordan-luka-2-basketbolnye-krossovki-muzskie-zelenyi)\n\nчто бы начать заново нажми /start",
             parse_mode=ParseMode.MARKDOWN_V2,
         )
     elif (
@@ -94,6 +94,6 @@ async def shues(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await context.bot.send_photo(
             chat_id=update.effective_chat.id,
             photo=open("photo/nike_gt_jump.png", "rb"),
-            caption="jump  купить [тут](https://cdek.shopping/p/11035142/krossovki-nike-air-zoom-gt-jump-raznocvetnyi)\n\nчто бы начать заново нажми /start",
+            caption="nike gt jump\n\nкупить [тут](https://cdek.shopping/p/11035142/krossovki-nike-air-zoom-gt-jump-raznocvetnyi)\n\nчто бы начать заново нажми /start",
             parse_mode=ParseMode.MARKDOWN_V2,
         )
