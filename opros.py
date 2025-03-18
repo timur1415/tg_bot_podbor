@@ -15,7 +15,7 @@ async def position(update: Update, context: ContextTypes.DEFAULT_TYPE):
     markup = ReplyKeyboardMarkup(keyboard)
     await context.bot.send_message(
         chat_id=update.effective_chat.id,
-        text="я бот по подбору баскетбольных кроссовок выбери свою позицию",
+        text="я бот по подбору баскетбольных кроссовок! на какой позиции ты играешь?",
         reply_markup=markup,
     )
     return GET_MONEY
@@ -27,7 +27,7 @@ async def money(update: Update, context: ContextTypes.DEFAULT_TYPE):
     print(context.user_data["position"])
     markup = ReplyKeyboardMarkup(keyboard)
     await context.bot.send_message(
-        chat_id=update.effective_chat.id, text="выбери свой бюджет", reply_markup=markup
+        chat_id=update.effective_chat.id, text="на какой бюджет ты расчитываешь?", reply_markup=markup
     )
     return GET_ROST
 
