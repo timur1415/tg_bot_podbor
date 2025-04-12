@@ -7,6 +7,7 @@ from telegram.ext import (
     ContextTypes,
 )
 from states import MAGAZ
+
 async def magaz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
@@ -24,6 +25,9 @@ async def magaz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         context.user_data['n_page'] = 1
         n_page = context.user_data.get('n_page')
-    text = f'товар {n_page}'
-    await context.bot.send_message(chat_id=update.effective_user.id, text=text, reply_markup=markup)
+    
+    if context.user_data['n_page'] == 2:
+        text = f'товар {n_page}'
+        await query.edit_message_text(text=text, reply_markup=markup)
+
     return MAGAZ
