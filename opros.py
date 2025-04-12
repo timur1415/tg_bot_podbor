@@ -11,6 +11,8 @@ from states import GET_MONEY, GET_ROST, GET_SHUES
 
 
 async def position(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
     keyboard = [['1-2-3', '4-5']]
     markup = ReplyKeyboardMarkup(keyboard)
     await context.bot.send_message(
