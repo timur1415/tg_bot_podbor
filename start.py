@@ -6,11 +6,13 @@ from states import MAIN_MENU
 
 from openai import OpenAI
 
+import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
 
-import os
+
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -30,7 +32,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     response = client.responses.create(
         model="gpt-4o-mini",
         input=[
-            {"role": "developer", "content": "разговаривай как рэйпер и через каждое слово говори ёоу"},
+            {"role": "developer", "content": "разговаривай максимально просто и коротко"},
             {"role": "user", "content": "Что делать в баскетболе, если я лось"},
         ],
     )

@@ -47,7 +47,7 @@ async def shues(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await context.bot.send_photo(
             chat_id=update.effective_chat.id,
             photo=open("photo/nike_gt_cut.png", "rb"),
-            caption="nnike gt cut 2\n\nкупить [тут](https://cdek.shopping/p/4525949/nike-zoom-gt-cut-2-cernyi-yarko-malinovyi)",
+            caption="nike gt cut 2\n\nкупить [тут](https://cdek.shopping/p/4525949/nike-zoom-gt-cut-2-cernyi-yarko-malinovyi)",
             parse_mode=ParseMode.MARKDOWN_V2,
         )
         await context.bot.send_photo(
@@ -94,6 +94,6 @@ async def shues(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await context.bot.send_photo(
             chat_id=update.effective_chat.id,
             photo=open("photo/nike_gt_jump.png", "rb"),
-            caption="nike gt jump\n\nкупить [тут](https://cdek.shopping/p/11035142/krossovki-nike-air-zoom-gt-jump-raznocvetnyi)\n\nчто бы начать заново нажми /start",
+            caption="nike gt jump 1\n\nкупить [тут](https://cdek.shopping/p/11035142/krossovki-nike-air-zoom-gt-jump-raznocvetnyi)\n\nчто бы начать заново нажми /start",
             parse_mode=ParseMode.MARKDOWN_V2,
         )

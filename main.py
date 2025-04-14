@@ -19,6 +19,13 @@ from start import start
 
 from magaz import magaz
 
+import os
+
+from dotenv import load_dotenv
+load_dotenv()
+
+
+
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
 )
@@ -27,7 +34,7 @@ logging.basicConfig(
 if __name__ == "__main__":
     application = (
         ApplicationBuilder()
-        .token("7555800128:AAFEvynoqe_lP6zMlGTlLCuwu10nErf5cTo")
+        .token(os.getenv("TOKEN"))
         .build()
     )
 
@@ -44,7 +51,7 @@ if __name__ == "__main__":
             GET_ROST: [MessageHandler(filters.TEXT & ~filters.COMMAND, rost)],
             GET_SHUES: [MessageHandler(filters.TEXT & ~filters.COMMAND, shues)],
         },
-        fallbacks=[CommandHandler("start", position)],
+        fallbacks=[CommandHandler("start", start)],
     )
 
     application.add_handler(conv_handler)
