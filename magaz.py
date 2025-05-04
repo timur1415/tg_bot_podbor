@@ -14,9 +14,10 @@ async def magaz(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [
             InlineKeyboardButton("👈🏿", callback_data="left"),
             InlineKeyboardButton("👉🏿", callback_data="right"),
-        ]
+        ],
+        [InlineKeyboardButton('выход', callback_data="exit")]
     ]
-    markup = InlineKeyboardMarkup(keyboard)
+
     if query.data == "magaz":
         context.user_data["n_page"] = 1
     elif query.data == "left":
@@ -29,6 +30,9 @@ async def magaz(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         context.user_data["n_page"] = 1
         n_page = context.user_data.get("n_page")
+    
+    if n_page > 9:
+        n_page = 9
 
     with open(GOODS_INFO[n_page]["photo"], "rb") as photo:
 

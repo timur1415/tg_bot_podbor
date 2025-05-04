@@ -1,6 +1,8 @@
 from telegram import (
     Update,
     ReplyKeyboardRemove,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup
 )
 from telegram.ext import (
     ContextTypes,
@@ -10,6 +12,9 @@ from telegram.constants import ParseMode
 
 
 async def shues(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    keyboard = [[InlineKeyboardButton('выход', callback_data='exit')]]
+    markup = InlineKeyboardMarkup(keyboard)
+
     context.user_data["rost"] = update.effective_message.text
     print(context.user_data["rost"])
     message = await context.bot.send_message(
@@ -36,8 +41,8 @@ async def shues(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await context.bot.send_photo(
             chat_id=update.effective_chat.id,
             photo=open("photo/puma_all-pro.png", "rb"),
-            caption="puma all pro nitro\n\nкупить [тут](https://cdek.shopping/p/10424519/muzskie-basketbolnye-krossovki-puma-all-pro-nitro-belyisinii)\n\nчто бы начать заново нажми на /start",
-            parse_mode=ParseMode.MARKDOWN_V2,
+            caption="puma all pro nitro\n\nкупить [тут](https://cdek.shopping/p/10424519/muzskie-basketbolnye-krossovki-puma-all-pro-nitro-belyisinii)",
+            parse_mode=ParseMode.MARKDOWN_V2, reply_markup=markup
         )
     elif (
         position == "1-2-3"
@@ -59,8 +64,8 @@ async def shues(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await context.bot.send_photo(
             chat_id=update.effective_chat.id,
             photo=open("photo/nike_kd_17.png", "rb"),
-            caption="nike kd 17\n\nкупить [тут](https://cdek.shopping/p/11024758/krossovki-nike-kd-17-ep-zeltyi)\n\nчто бы начать заново нажми /start",
-            parse_mode=ParseMode.MARKDOWN_V2,
+            caption="nike kd 17\n\nкупить [тут](https://cdek.shopping/p/11024758/krossovki-nike-kd-17-ep-zeltyi)",
+            parse_mode=ParseMode.MARKDOWN_V2, reply_markup=markup
         )
     elif (
         position == "4-5"
@@ -77,8 +82,8 @@ async def shues(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await context.bot.send_photo(
             chat_id=update.effective_chat.id,
             photo=open("photo/jordan_luka.png", "rb"),
-            caption="jordan luka 2\n\nкупить [тут](https://cdek.shopping/p/10422910/jordan-luka-2-basketbolnye-krossovki-muzskie-zelenyi)\n\nчто бы начать заново нажми /start",
-            parse_mode=ParseMode.MARKDOWN_V2,
+            caption="jordan luka 2\n\nкупить [тут](https://cdek.shopping/p/10422910/jordan-luka-2-basketbolnye-krossovki-muzskie-zelenyi)",
+            parse_mode=ParseMode.MARKDOWN_V2,reply_markup=markup
         )
     elif (
         position == "4-5"
@@ -94,6 +99,7 @@ async def shues(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await context.bot.send_photo(
             chat_id=update.effective_chat.id,
             photo=open("photo/nike_gt_jump.png", "rb"),
-            caption="nike gt jump 1\n\nкупить [тут](https://cdek.shopping/p/11035142/krossovki-nike-air-zoom-gt-jump-raznocvetnyi)\n\nчто бы начать заново нажми /start",
+            caption="nike gt jump 1\n\nкупить [тут](https://cdek.shopping/p/11035142/krossovki-nike-air-zoom-gt-jump-raznocvetnyi)",
             parse_mode=ParseMode.MARKDOWN_V2,
+            reply_markup=markup
         )
