@@ -1,10 +1,10 @@
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto
 from telegram.ext import (
     ContextTypes,
 )
 from states import AI
 
-from openai import OpenAI, AsyncOpenAI
+from openai import AsyncOpenAI
 
 import os
 
@@ -25,10 +25,18 @@ async def ai_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def ai(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["questions"] = update.effective_message.text
+
     client = AsyncOpenAI(api_key=os.getenv("CHAT_GPT_TOKEN"))
 
-    keyboard = [[InlineKeyboardButton("назад", callback_data="back")],
-                [InlineKeyboardButton('посмотреть анкету админа (афанасия)', callback_data='admin')]]
+    keyboard = [
+        [InlineKeyboardButton("назад", callback_data="back")],
+        [
+            InlineKeyboardButton(
+                "посмотреть анкету админа (афанасия)", callback_data="admin"
+            )
+        ],
+    ]
+
     markup = InlineKeyboardMarkup(keyboard)
 
     response = await client.responses.create(
@@ -46,13 +54,16 @@ async def ai(update: Update, context: ContextTypes.DEFAULT_TYPE):
         chat_id=update.effective_chat.id, text=response.output_text, reply_markup=markup
     )
 
+
 async def admin(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
     keyboard = [[InlineKeyboardButton("назад", callback_data="back")]]
     markup = InlineKeyboardMarkup(keyboard)
-    await context.bot.send_photo(
-        chat_id=update.effective_chat.id,
-        photo=open('photo/admin.jpg', 'rb'),
-    caption= "я сотрудник компании подбор кроссовок дал клятву что буду отвечать на ваши вопросы в любое время суток 🤙🏻🤙🏻🤙🏻", reply_markup=markup)
+    with open("photo/admin.jpg", "rb") as photo:
+        await query.edit_message_media(media=InputMediaPhoto(media=photo))
 
-
-
+        await query.edit_message_caption(
+            caption="я сотрудник компании KicksWizard дал клятву что буду отвечать на ваши вопросы в любое время суток 🤙🏻🤙🏻🤙🏻",
+            reply_markup=markup,
+        )

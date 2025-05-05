@@ -32,7 +32,8 @@ async def magaz(update: Update, context: ContextTypes.DEFAULT_TYPE):
         n_page = context.user_data.get("n_page")
     
     if n_page > 9:
-        n_page = 9
+        n_page = 1
+    
 
     with open(GOODS_INFO[n_page]["photo"], "rb") as photo:
 
