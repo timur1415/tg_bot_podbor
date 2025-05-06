@@ -32,7 +32,7 @@ async def magaz(update: Update, context: ContextTypes.DEFAULT_TYPE):
         n_page = context.user_data.get("n_page")
     
     if n_page > 9:
-        n_page = 1
+        n_page = 9
     
 
     with open(GOODS_INFO[n_page]["photo"], "rb") as photo:
@@ -40,7 +40,7 @@ async def magaz(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.edit_message_media(media=InputMediaPhoto(media=photo))
 
         await query.edit_message_caption(
-        caption=f"{GOODS_INFO[n_page]['name']} - хорошие кроссовки, которые подходят игрокам играющим на позиции {GOODS_INFO[n_page]['position']} номера. {GOODS_INFO[n_page]['name']} подойдут тем кто расчитывает на {GOODS_INFO[n_page]['money']} бюджет.\n\n что бы купить обратись по ссылке 👇🏿 \n\n {GOODS_INFO[n_page]['url']}",
+        caption=f"🔥 {GOODS_INFO[n_page]['name']} — убийственный выбор для {GOODS_INFO[n_page]['position']} позиции!\n\nЭти кроссы — твой секретный снаряд для доминирования на площадке. 💥\nПодходят тем, кто ищет крутые варианты за {GOODS_INFO[n_page]['money']} бюджет 💸\n\nХочешь примерить власть? Жми ниже и забирай свою пару 👇🏿\n\n{GOODS_INFO[n_page]['url']}\n\nP.S. С такими кроссовками тебя запомнят не только по номеру, но и по стилю. 😏🏀",
         reply_markup= InlineKeyboardMarkup(keyboard))
 
     return MAGAZ

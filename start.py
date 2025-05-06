@@ -4,8 +4,6 @@ from telegram.ext import (
 )
 from states import MAIN_MENU
 
-import os
-
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -18,14 +16,14 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if query:
         await query.answer()
     keyboard = [
-        [InlineKeyboardButton("магазин", callback_data="magaz")],
-        [InlineKeyboardButton("подбор", callback_data="podbor")],
-        [InlineKeyboardButton('ответы на вопросы про баскет', callback_data="ai")]
+        [InlineKeyboardButton("🛒 В магазин 🛒", callback_data="magaz")],
+        [InlineKeyboardButton("👟 Найти свою пару 👟", callback_data="podbor")],
+        [InlineKeyboardButton('🔥 KicksWizard Baller Support 🔥', callback_data="ai")]
     ]
     markup = InlineKeyboardMarkup(keyboard)
     await context.bot.send_message(
         chat_id=update.effective_chat.id,
-        text="выбери что хочешь делать",
+        text="🔹 Магазин – свежие Nike, Jordan, Adidas и другие.\n\n🔹 Подбор кроссовок – найдём идеальную пару под твои запросы.\n\n🔹 Афанасий – ответит на любые вопросы о кроссах, баскетболе и не только🚀",
         reply_markup=markup,
     )
 
